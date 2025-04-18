@@ -11,7 +11,8 @@ public interface ArmstrongNumber {
         var res = 0;
         while (number > 0) {
             int remainder = number % 10;
-            int pow = (int) Math.pow(remainder, 3);
+//            int pow = (int) Math.pow(remainder, 3);
+            int pow = remainder * remainder * remainder;
             res += pow;
             number /= 10;
         }

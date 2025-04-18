@@ -1,4 +1,4 @@
-package com.ayushman.liner.search;
+package com.ayushman.search.linear;
 
 import java.text.MessageFormat;
 import java.util.Optional;
