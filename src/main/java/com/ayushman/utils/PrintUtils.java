@@ -2,6 +2,7 @@ package com.ayushman.utils;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
+import java.util.Map;
 
 public interface PrintUtils {
   String ANSI_RESET = "\u001B[0m";
@@ -54,6 +55,10 @@ public interface PrintUtils {
     print(null, arr);
   }
 
+  static void print(String[] arr) {
+    print(null, arr);
+  }
+
   static void print(int[][] arr, String tag) {
     for (int i = 0; i < arr.length; i++) {
       print(tag, arr[i]);
@@ -68,19 +73,23 @@ public interface PrintUtils {
     System.out.println((tag != null ? (tag + ":") : ("")) + Arrays.toString(arr));
   }
 
+  static void print(String tag, String[] arr) {
+    System.out.println((tag != null ? (tag + ":") : ("")) + Arrays.toString(arr));
+  }
+
   static void print(String tag, int[] arr, int num) {
     System.out.println(
-            ANSI_RED
-                    + (tag != null ? (tag + ":") : (""))
-                    + ANSI_RESET
-                    + " in array : "
-                    + ANSI_GREEN
-                    + Arrays.toString(arr)
-                    + ANSI_RESET
-                    + " is: "
-                    + ANSI_RED
-                    + num
-                    + ANSI_RESET);
+        ANSI_RED
+            + (tag != null ? (tag + ":") : (""))
+            + ANSI_RESET
+            + " in array : "
+            + ANSI_GREEN
+            + Arrays.toString(arr)
+            + ANSI_RESET
+            + " is: "
+            + ANSI_RED
+            + num
+            + ANSI_RESET);
   }
 
   static void print(String tag, int[] arr, int num1, boolean num) {
@@ -148,6 +157,17 @@ public interface PrintUtils {
 
   static void print(String s1, String s2, String s3, String s4) {
     System.out.println(MessageFormat.format("[{0}, {1}, {2}, {3}]", s1, s2, s3, s4));
+  }
+
+  static <K, V> void print(Map<K, V> map) {
+    System.out.print("[");
+    map.forEach((k, v) -> System.out.print(MessageFormat.format("{0}->{1}, ", k, v)));
+    System.out.print("]");
+    print();
+  }
+
+  static void print() {
+    System.out.println();
   }
 
   static void print(String s, char c, boolean test) {
